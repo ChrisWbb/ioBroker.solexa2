@@ -1,0 +1,52 @@
+{
+	"expert": "yes",
+	"cli": false,
+	"adapterName": "solexa2",
+	"title": "solexa II ",
+	"description": "solexa II adapter for ioBroker",
+	"contributors": "",
+	"authorName": "ChrisWbb",
+	"authorGithub": "ChrisWbb",
+	"authorEmail": "development@chrweber.de",
+	"features": [
+		"adapter"
+	],
+	"adminFeatures": [],
+	"type": "iot-systems",
+	"startMode": "daemon",
+	"connectionType": "local",
+	"dataSource": "poll",
+	"connectionIndicator": "yes",
+	"adapterSettings": [
+		{
+			"key": "serverIp",
+			"inputType": "text",
+			"defaultValue": ""
+		},
+		{
+			"key": "serverPort",
+			"inputType": "text",
+			"defaultValue": "4242"
+		},
+		{
+			"key": "interval",
+			"inputType": "number",
+			"defaultValue": "30"
+		}
+	],
+	"language": "TypeScript",
+	"nodeVersion": "16",
+	"adminUi": "json",
+	"releaseScript": "yes",
+	"indentation": "Tab",
+	"quotes": "double",
+	"es6class": "yes",
+	"tools": [
+		"ESLint"
+	],
+	"gitRemoteProtocol": "HTTPS",
+	"license": "MIT License",
+	"dependabot": "yes",
+	"target": "github",
+	"creatorVersion": "2.3.0"
+}

@@ -1,0 +1,21 @@
+{
+	"i18n": true,
+	"type": "panel",
+	"items": {
+		"serverIp": {
+			"type": "text",
+			"label": "serverIp",
+			"newLine": true
+		},
+		"serverPort": {
+			"type": "text",
+			"label": "serverPort",
+			"newLine": true
+		},
+		"interval": {
+			"type": "number",
+			"label": "interval",
+			"newLine": true
+		}
+	}
+}

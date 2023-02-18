@@ -1,0 +1,109 @@
+{
+	"common": {
+		"name": "solexa2",
+		"version": "0.0.1",
+		"news": {
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"zh-cn": "首次出版"
+			}
+		},
+		"title": "solexa II ",
+		"titleLang": {
+			"en": "solexa II ",
+			"de": "solexa II ",
+			"ru": "solexa II ",
+			"pt": "solexa II ",
+			"nl": "solexa II ",
+			"fr": "solexa II ",
+			"it": "solexa II ",
+			"es": "solexa II ",
+			"pl": "solexa II ",
+			"zh-cn": "solexa II "
+		},
+		"desc": {
+			"en": "solexa II adapter for ioBroker",
+			"de": "solexa II adapter for ioBroker",
+			"ru": "solexa II adapter for ioBroker",
+			"pt": "solexa II adapter for ioBroker",
+			"nl": "solexa II adapter for ioBroker",
+			"fr": "solexa II adapter for ioBroker",
+			"it": "solexa II adapter for ioBroker",
+			"es": "solexa II adapter for ioBroker",
+			"pl": "solexa II adapter for ioBroker",
+			"zh-cn": "solexa II adapter for ioBroker"
+		},
+		"authors": [
+			"ChrisWbb <development@chrweber.de>"
+		],
+		"keywords": [
+			"ioBroker",
+			"template",
+			"Smart Home",
+			"home automation"
+		],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "build/main.js",
+		"icon": "solexa2.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/ChrisWbb/ioBroker.solexa2/main/admin/solexa2.png",
+		"readme": "https://github.com/ChrisWbb/ioBroker.solexa2/blob/main/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "iot-systems",
+		"compact": true,
+		"connectionType": "local",
+		"dataSource": "poll",
+		"adminUI": {
+			"config": "json"
+		},
+		"dependencies": [
+			{
+				"js-controller": ">=3.3.22"
+			}
+		],
+		"globalDependencies": [
+			{
+				"admin": ">=5.1.13"
+			}
+		]
+	},
+	"native": {
+		"serverIp": "",
+		"serverPort": "4242",
+		"interval": "30"
+	},
+	"objects": [],
+	"instanceObjects": [
+		{
+			"_id": "info",
+			"type": "channel",
+			"common": {
+				"name": "Information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "info.connection",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "Device or service connected",
+				"type": "boolean",
+				"read": true,
+				"write": false,
+				"def": false
+			},
+			"native": {}
+		}
+	]
+}
