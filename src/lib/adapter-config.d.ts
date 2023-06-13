@@ -5,7 +5,7 @@ declare global {
 	namespace ioBroker {
 		interface AdapterConfig {
 			serverIp: string;
-			serverPort: string;
+			serverPort: number;
 			interval: number;
 		}
 	}
