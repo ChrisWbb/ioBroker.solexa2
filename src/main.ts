@@ -524,7 +524,7 @@ class Solexa2 extends utils.Adapter {
 
 	private async saveChannelMeasurementData(data: ChannelMeasurementData) : Promise<void> {
 
-		const id  = data.getId();
+		//const id  = data.getId();
 		const readStatus  = data.getReadStatus();
 		const statusFlag = data.getStatusFlag();
 		const value1  = data.getValue1();

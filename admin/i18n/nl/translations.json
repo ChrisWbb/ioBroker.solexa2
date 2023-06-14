@@ -1,6 +1,6 @@
 {
-	"solexa2 adapter settings": "Adapterinstellingen voor solexa2",
-	"serverIp": "serverIp",
-	"serverPort": "serverPort",
-	"interval": "interval"
+    "solexa2 adapter settings": "Adapterinstellingen voor solexa2",
+    "serverIp": "serverIp",
+    "serverPort": "serverPort",
+    "interval": "interval"
 }

@@ -1,6 +1,6 @@
 {
-	"solexa2 adapter settings": "solexa2的适配器设置",
-	"serverIp": "serverIp",
-	"serverPort": "serverPort",
-	"interval": "interval"
+    "solexa2 adapter settings": "solexa2的适配器设置",
+    "serverIp": "serverIp",
+    "serverPort": "serverPort",
+    "interval": "interval"
 }
