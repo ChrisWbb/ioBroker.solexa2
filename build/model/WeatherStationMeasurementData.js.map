@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/model/WeatherStationMeasurementData.ts"],
+  "sourcesContent": ["class WeatherStationMeasurementData {\n\n\tprivate temperature = -1.0;\n\tprivate windSpeed  = -1.0;\n\tprivate isRaining  = false;\n\tprivate brightness = -1;\n\n\n\t/* setter */\n\n\tpublic setTemperature(temperature : number) : void {\n\t\tthis.temperature = temperature;\n\t}\n\n\tpublic setWindSpeed(windSpeed : number) : void {\n\t\tthis.windSpeed = windSpeed;\n\t}\n\n\tpublic setIsRaining(isRaining : boolean) : void {\n\t\tthis.isRaining = isRaining;\n\t}\n\n\tpublic setBrightness(brightness : number) : void {\n\t\tthis.brightness = brightness;\n\t}\n\n\n\t/* getter */\n\n\tpublic getTemperature() : number {\n\t\treturn this.temperature;\n\t}\n\n\tpublic getWindSpeed() : number {\n\t\treturn this.windSpeed;\n\t}\n\n\tpublic getIsRaining() : boolean {\n\t\treturn this.isRaining;\n\t}\n\n\tpublic getBrightness() : number {\n\t\treturn this.brightness;\n\t}\n\n}\n\nexport {WeatherStationMeasurementData}"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,MAAM,8BAA8B;AAAA,EAApC;AAEC,SAAQ,cAAc;AACtB,SAAQ,YAAa;AACrB,SAAQ,YAAa;AACrB,SAAQ,aAAa;AAAA;AAAA,EAKd,eAAe,aAA6B;AAClD,SAAK,cAAc;AAAA,EACpB;AAAA,EAEO,aAAa,WAA2B;AAC9C,SAAK,YAAY;AAAA,EAClB;AAAA,EAEO,aAAa,WAA4B;AAC/C,SAAK,YAAY;AAAA,EAClB;AAAA,EAEO,cAAc,YAA4B;AAChD,SAAK,aAAa;AAAA,EACnB;AAAA,EAKO,iBAA0B;AAChC,WAAO,KAAK;AAAA,EACb;AAAA,EAEO,eAAwB;AAC9B,WAAO,KAAK;AAAA,EACb;AAAA,EAEO,eAAyB;AAC/B,WAAO,KAAK;AAAA,EACb;AAAA,EAEO,gBAAyB;AAC/B,WAAO,KAAK;AAAA,EACb;AAED;",
+  "names": []
+}

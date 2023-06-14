@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/util/Queue.ts"],
+  "sourcesContent": ["class Queue<T> {\n\tprivate storage: T[] = [];\n\n\tconstructor(private capacity: number = Infinity) {}\n\n\tenqueue(item: T): void {\n\t\tif (this.size() === this.capacity) {\n\t\t\tthrow Error(\"Queue has reached max capacity, you cannot add more items\");\n\t\t}\n\t\tthis.storage.push(item);\n\t}\n\n\tdequeue(): T | undefined {\n\t\treturn this.storage.shift();\n\t}\n\n\tsize(): number {\n\t\treturn this.storage.length;\n\t}\n\n\tisEmpty(): boolean {\n\t\treturn this.size() === 0;\n\t}\n\n\tfirst(): T | undefined {\n\t\treturn this.storage.at(0);\n\t}\n}\n\nexport { Queue };"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,MAAM,MAAS;AAAA,EAGd,YAAoB,WAAmB,UAAU;AAA7B;AAFpB,SAAQ,UAAe,CAAC;AAAA,EAE0B;AAAA,EAElD,QAAQ,MAAe;AACtB,QAAI,KAAK,KAAK,MAAM,KAAK,UAAU;AAClC,YAAM,MAAM,2DAA2D;AAAA,IACxE;AACA,SAAK,QAAQ,KAAK,IAAI;AAAA,EACvB;AAAA,EAEA,UAAyB;AACxB,WAAO,KAAK,QAAQ,MAAM;AAAA,EAC3B;AAAA,EAEA,OAAe;AACd,WAAO,KAAK,QAAQ;AAAA,EACrB;AAAA,EAEA,UAAmB;AAClB,WAAO,KAAK,KAAK,MAAM;AAAA,EACxB;AAAA,EAEA,QAAuB;AACtB,WAAO,KAAK,QAAQ,GAAG,CAAC;AAAA,EACzB;AACD;",
+  "names": []
+}
