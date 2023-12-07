@@ -153,7 +153,7 @@ class Solexa2 extends utils.Adapter {
 		this.solexa2Controller.sendCommandGetBasicInfos();
 
 		this.updateInterval = this.setInterval(async () => {
-			this.log.info("fetchAllMeasurementData");
+			this.log.info("fetchAllMeasurementData v1");
 			this.solexa2Controller.fetchAllMeasurementData();
 		}, this.config.interval * 1000);
 	}
@@ -168,9 +168,9 @@ class Solexa2 extends utils.Adapter {
 				this.createSolexaWeaterStationInfoObjects();
 			}
 
-			// for (let i = 0; i < data.getMaxChannels(); i++) {
+			//for (let i = 0; i < data.getMaxChannels(); i++) {
 			// 	this.solexa2Controller.sendCommandGetChannel(i);
-			// }
+			//}
 
 			// for (let i = 1; i < 10; i++) {
 			// 	this.solexa2Controller.sendCommandGetChannel(i);

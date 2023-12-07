@@ -20,6 +20,7 @@ class Solexa2Controller {
 	private channels: ChannelInfoData[];
 	private openMeasurementIDs: number[];
 	private reconnectCount: number;
+	private lastChannelNum: number;
 
 	//private messageQueue : Queue<Solexa2Message>;
 
@@ -30,6 +31,7 @@ class Solexa2Controller {
 		this.log = adapterInstance.log;
 
 		this.reconnectCount = 0;
+		this.lastChannelNum = 0;
 	}
 
 
@@ -74,7 +76,7 @@ class Solexa2Controller {
 	private async convertData(data : Uint8Array, callbackData: (value: BasicInfoData | ChannelInfoData | ChannelMeasurementData | WeatherStationMeasurementData | undefined) => void) : Promise<void> {
 
 		const responseCode = data[2] & 255;
-		this.log.debug("responseCode: "+responseCode + " reconnect: " + this.reconnectCount);
+		this.log.info("responseCode: "+responseCode + " reconnect: " + this.reconnectCount);
 
 		if (responseCode != 212 ) {
 			if (this.isCheckSumOK(data)) {
@@ -95,6 +97,9 @@ class Solexa2Controller {
 						this.readChannelValues(data, callbackData);
 						break;
 					}
+					default :{
+						this.log.error("responseCode not supported: "+responseCode);
+					}
 				}
 				//this.sendNextMessage();
 			} else {
@@ -112,15 +117,19 @@ class Solexa2Controller {
 			this.openMeasurementIDs.push(this.channels[i].getId())
 		}
 
+		this.log.info("called fetchAllMeasurementData (#channel:"+this.openMeasurementIDs.length+")");
+
 		this.fetchNextMeasurementData();
 	}
 
 	public async fetchNextMeasurementData() : Promise<void> {
-
+		this.log.info("called fetchNextMeasurementData");
 		const nextID = this.openMeasurementIDs.shift();
 		if (nextID) {
 			this.sendCommandGetChannelValues(nextID);
 		}
+
+		//this.sendCommandGetChannelValues(1);
 	}
 
 	public sendCommandGetBasicInfos() : void {
@@ -129,6 +138,7 @@ class Solexa2Controller {
 	}
 
 	public sendCommandGetChannel(channelNum : number) : void {
+		this.lastChannelNum = channelNum;
 		this.log.info("called sendCommandGetChannel("+channelNum+")");
 		this.sendMessage(new Uint8Array([201,channelNum]));
 	}
@@ -158,6 +168,7 @@ class Solexa2Controller {
 		//}
 		const buffer = Buffer.from(message.getMessage());
 		this.socket.write(buffer);
+		this.log.info("called sendMessage("+message.getMessage()+")");
 	}
 	/*
 	private sendFirstMessage(): void {
@@ -245,8 +256,8 @@ class Solexa2Controller {
 			callbackData(data);
 		}
 
-		if (this.basicInfoData && data.getId() < this.basicInfoData.getMaxChannels()) {
-			this.sendCommandGetChannel(data.getId()+1);
+		if (this.basicInfoData && (this.lastChannelNum + 1) < this.basicInfoData.getMaxChannels()) {
+			this.sendCommandGetChannel(this.lastChannelNum+1);
 		}
 	}
 
@@ -262,7 +273,7 @@ class Solexa2Controller {
 		data.setNewParameter(uint8[11] & 255);
 
 		// if (uint8[21] == 66 && uint8.length > 27) {
-		// 	data.setTemperature(Buffer.from([uint8[22], uint8[23]]).readUIntLE(0, 2)/10.0);
+		// 	data.setTemperature(Buffer.from([uint8[22], uint8[23]]).readIntLE(0, 2)/10.0);
 		// }
 
 		callbackData(data);
@@ -271,7 +282,7 @@ class Solexa2Controller {
 
 			const weatherData : WeatherStationMeasurementData = new WeatherStationMeasurementData();
 
-			weatherData.setTemperature(Buffer.from([uint8[13], uint8[14]]).readUIntLE(0, 2)/10.0);
+			weatherData.setTemperature(Buffer.from([uint8[13], uint8[14]]).readIntLE(0, 2)/10.0);
 			weatherData.setWindSpeed(Buffer.from([uint8[15], uint8[16]]).readUIntLE(0, 2)/10.0);
 			weatherData.setIsRaining(uint8[17] != 78);
 			weatherData.setBrightness(Buffer.from([uint8[18], uint8[19], uint8[20],0]).readUIntLE(0, 4));

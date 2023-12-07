@@ -97,7 +97,7 @@ class Solexa2 extends utils.Adapter {
     this.createSolexaInfoObjects();
     this.solexa2Controller.sendCommandGetBasicInfos();
     this.updateInterval = this.setInterval(async () => {
-      this.log.info("fetchAllMeasurementData");
+      this.log.info("fetchAllMeasurementData v1");
       this.solexa2Controller.fetchAllMeasurementData();
     }, this.config.interval * 1e3);
   }
@@ -410,7 +410,6 @@ class Solexa2 extends utils.Adapter {
     }
   }
   async saveChannelMeasurementData(data) {
-    const id = data.getId();
     const readStatus = data.getReadStatus();
     const statusFlag = data.getStatusFlag();
     const value1 = data.getValue1();
